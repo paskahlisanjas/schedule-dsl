@@ -16,37 +16,49 @@ public class SchedulingGrammarBaseListener implements SchedulingGrammarListener 
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpression(SchedulingGrammarParser.ExpressionContext ctx) { }
+	@Override public void enterEkspresi(SchedulingGrammarParser.EkspresiContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpression(SchedulingGrammarParser.ExpressionContext ctx) { }
+	@Override public void exitEkspresi(SchedulingGrammarParser.EkspresiContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCommand(SchedulingGrammarParser.CommandContext ctx) { }
+	@Override public void enterPerintah(SchedulingGrammarParser.PerintahContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCommand(SchedulingGrammarParser.CommandContext ctx) { }
+	@Override public void exitPerintah(SchedulingGrammarParser.PerintahContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEntity(SchedulingGrammarParser.EntityContext ctx) { }
+	@Override public void enterEntitas(SchedulingGrammarParser.EntitasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEntity(SchedulingGrammarParser.EntityContext ctx) { }
+	@Override public void exitEntitas(SchedulingGrammarParser.EntitasContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjek(SchedulingGrammarParser.ObjekContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjek(SchedulingGrammarParser.ObjekContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

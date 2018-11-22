@@ -8,35 +8,45 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface SchedulingGrammarListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link SchedulingGrammarParser#expression}.
+	 * Enter a parse tree produced by {@link SchedulingGrammarParser#ekspresi}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(SchedulingGrammarParser.ExpressionContext ctx);
+	void enterEkspresi(SchedulingGrammarParser.EkspresiContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SchedulingGrammarParser#expression}.
+	 * Exit a parse tree produced by {@link SchedulingGrammarParser#ekspresi}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(SchedulingGrammarParser.ExpressionContext ctx);
+	void exitEkspresi(SchedulingGrammarParser.EkspresiContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SchedulingGrammarParser#command}.
+	 * Enter a parse tree produced by {@link SchedulingGrammarParser#perintah}.
 	 * @param ctx the parse tree
 	 */
-	void enterCommand(SchedulingGrammarParser.CommandContext ctx);
+	void enterPerintah(SchedulingGrammarParser.PerintahContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SchedulingGrammarParser#command}.
+	 * Exit a parse tree produced by {@link SchedulingGrammarParser#perintah}.
 	 * @param ctx the parse tree
 	 */
-	void exitCommand(SchedulingGrammarParser.CommandContext ctx);
+	void exitPerintah(SchedulingGrammarParser.PerintahContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SchedulingGrammarParser#entity}.
+	 * Enter a parse tree produced by {@link SchedulingGrammarParser#entitas}.
 	 * @param ctx the parse tree
 	 */
-	void enterEntity(SchedulingGrammarParser.EntityContext ctx);
+	void enterEntitas(SchedulingGrammarParser.EntitasContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SchedulingGrammarParser#entity}.
+	 * Exit a parse tree produced by {@link SchedulingGrammarParser#entitas}.
 	 * @param ctx the parse tree
 	 */
-	void exitEntity(SchedulingGrammarParser.EntityContext ctx);
+	void exitEntitas(SchedulingGrammarParser.EntitasContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SchedulingGrammarParser#objek}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjek(SchedulingGrammarParser.ObjekContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SchedulingGrammarParser#objek}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjek(SchedulingGrammarParser.ObjekContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SchedulingGrammarParser#kode}.
 	 * @param ctx the parse tree

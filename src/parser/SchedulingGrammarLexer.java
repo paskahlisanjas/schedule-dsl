@@ -19,8 +19,8 @@ public class SchedulingGrammarLexer extends Lexer {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, BUAT=9, 
 		UBAH=10, HAPUS=11, LIHAT=12, KELAS=13, RUANG=14, DENGAN=15, FASILITAS=16, 
-		KAPASITAS=17, KEBUTUHAN=18, PREFERENSI=19, SKS=20, HARI=21, JAM=22, NUMBER=23, 
-		KODE_VALUE=24, TEXT=25, WS=26;
+		KAPASITAS=17, KEBUTUHAN=18, PREFERENSI=19, SKS=20, HARI=21, JAM=22, WS=23, 
+		NUMBER=24, KODE_VALUE=25, TEXT=26;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -32,8 +32,8 @@ public class SchedulingGrammarLexer extends Lexer {
 	public static final String[] ruleNames = {
 		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "BUAT", 
 		"UBAH", "HAPUS", "LIHAT", "KELAS", "RUANG", "DENGAN", "FASILITAS", "KAPASITAS", 
-		"KEBUTUHAN", "PREFERENSI", "SKS", "HARI", "JAM", "NUMBER", "KODE_VALUE", 
-		"TEXT", "WS"
+		"KEBUTUHAN", "PREFERENSI", "SKS", "HARI", "JAM", "WS", "NUMBER", "KODE_VALUE", 
+		"TEXT"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -45,8 +45,8 @@ public class SchedulingGrammarLexer extends Lexer {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, "BUAT", "UBAH", 
 		"HAPUS", "LIHAT", "KELAS", "RUANG", "DENGAN", "FASILITAS", "KAPASITAS", 
-		"KEBUTUHAN", "PREFERENSI", "SKS", "HARI", "JAM", "NUMBER", "KODE_VALUE", 
-		"TEXT", "WS"
+		"KEBUTUHAN", "PREFERENSI", "SKS", "HARI", "JAM", "WS", "NUMBER", "KODE_VALUE", 
+		"TEXT"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -119,12 +119,12 @@ public class SchedulingGrammarLexer extends Lexer {
 		"\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\23\3"+
 		"\23\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3"+
 		"\24\3\25\3\25\3\25\3\25\3\26\3\26\3\26\3\26\3\26\3\27\3\27\3\27\3\27\3"+
-		"\27\3\27\3\27\3\30\6\30\u00bf\n\30\r\30\16\30\u00c0\3\31\7\31\u00c4\n"+
-		"\31\f\31\16\31\u00c7\13\31\3\31\6\31\u00ca\n\31\r\31\16\31\u00cb\3\32"+
-		"\6\32\u00cf\n\32\r\32\16\32\u00d0\3\33\6\33\u00d4\n\33\r\33\16\33\u00d5"+
-		"\3\33\3\33\2\2\34\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31"+
+		"\27\3\27\3\27\3\30\6\30\u00bf\n\30\r\30\16\30\u00c0\3\30\3\30\3\31\6\31"+
+		"\u00c6\n\31\r\31\16\31\u00c7\3\32\7\32\u00cb\n\32\f\32\16\32\u00ce\13"+
+		"\32\3\32\6\32\u00d1\n\32\r\32\16\32\u00d2\3\33\6\33\u00d6\n\33\r\33\16"+
+		"\33\u00d7\2\2\34\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31"+
 		"\16\33\17\35\20\37\21!\22#\23%\24\'\25)\26+\27-\30/\31\61\32\63\33\65"+
-		"\34\3\2\6\3\2\62;\4\2C\\c|\6\2//\62;C\\c|\5\2\13\f\17\17\"\"\2\u00dd\2"+
+		"\34\3\2\6\5\2\13\f\17\17\"\"\3\2\62;\4\2C\\c|\6\2//\62;C\\c|\2\u00dd\2"+
 		"\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r\3\2\2"+
 		"\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2"+
 		"\31\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\2#\3\2\2"+
@@ -134,7 +134,7 @@ public class SchedulingGrammarLexer extends Lexer {
 		"\2\2\25`\3\2\2\2\27e\3\2\2\2\31k\3\2\2\2\33q\3\2\2\2\35w\3\2\2\2\37}\3"+
 		"\2\2\2!\u0084\3\2\2\2#\u008e\3\2\2\2%\u0098\3\2\2\2\'\u00a2\3\2\2\2)\u00ad"+
 		"\3\2\2\2+\u00b1\3\2\2\2-\u00b6\3\2\2\2/\u00be\3\2\2\2\61\u00c5\3\2\2\2"+
-		"\63\u00ce\3\2\2\2\65\u00d3\3\2\2\2\678\7=\2\28\4\3\2\2\29:\7?\2\2:\6\3"+
+		"\63\u00cc\3\2\2\2\65\u00d5\3\2\2\2\678\7=\2\28\4\3\2\2\29:\7?\2\2:\6\3"+
 		"\2\2\2;<\7.\2\2<\b\3\2\2\2=>\7U\2\2>?\7G\2\2?@\7P\2\2@A\7K\2\2AB\7P\2"+
 		"\2B\n\3\2\2\2CD\7U\2\2DE\7G\2\2EF\7N\2\2FG\7C\2\2GH\7U\2\2HI\7C\2\2I\f"+
 		"\3\2\2\2JK\7T\2\2KL\7C\2\2LM\7D\2\2MN\7W\2\2N\16\3\2\2\2OP\7M\2\2PQ\7"+
@@ -162,15 +162,15 @@ public class SchedulingGrammarLexer extends Lexer {
 		"\7L\2\2\u00b7\u00b8\7C\2\2\u00b8\u00b9\7O\2\2\u00b9\u00ba\7\"\2\2\u00ba"+
 		"\u00bb\7M\2\2\u00bb\u00bc\7G\2\2\u00bc.\3\2\2\2\u00bd\u00bf\t\2\2\2\u00be"+
 		"\u00bd\3\2\2\2\u00bf\u00c0\3\2\2\2\u00c0\u00be\3\2\2\2\u00c0\u00c1\3\2"+
-		"\2\2\u00c1\60\3\2\2\2\u00c2\u00c4\t\3\2\2\u00c3\u00c2\3\2\2\2\u00c4\u00c7"+
-		"\3\2\2\2\u00c5\u00c3\3\2\2\2\u00c5\u00c6\3\2\2\2\u00c6\u00c9\3\2\2\2\u00c7"+
-		"\u00c5\3\2\2\2\u00c8\u00ca\4\62;\2\u00c9\u00c8\3\2\2\2\u00ca\u00cb\3\2"+
-		"\2\2\u00cb\u00c9\3\2\2\2\u00cb\u00cc\3\2\2\2\u00cc\62\3\2\2\2\u00cd\u00cf"+
-		"\t\4\2\2\u00ce\u00cd\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0\u00ce\3\2\2\2\u00d0"+
-		"\u00d1\3\2\2\2\u00d1\64\3\2\2\2\u00d2\u00d4\t\5\2\2\u00d3\u00d2\3\2\2"+
-		"\2\u00d4\u00d5\3\2\2\2\u00d5\u00d3\3\2\2\2\u00d5\u00d6\3\2\2\2\u00d6\u00d7"+
-		"\3\2\2\2\u00d7\u00d8\b\33\2\2\u00d8\66\3\2\2\2\t\2\u00c0\u00c5\u00cb\u00ce"+
-		"\u00d0\u00d5\3\b\2\2";
+		"\2\2\u00c1\u00c2\3\2\2\2\u00c2\u00c3\b\30\2\2\u00c3\60\3\2\2\2\u00c4\u00c6"+
+		"\t\3\2\2\u00c5\u00c4\3\2\2\2\u00c6\u00c7\3\2\2\2\u00c7\u00c5\3\2\2\2\u00c7"+
+		"\u00c8\3\2\2\2\u00c8\62\3\2\2\2\u00c9\u00cb\t\4\2\2\u00ca\u00c9\3\2\2"+
+		"\2\u00cb\u00ce\3\2\2\2\u00cc\u00ca\3\2\2\2\u00cc\u00cd\3\2\2\2\u00cd\u00d0"+
+		"\3\2\2\2\u00ce\u00cc\3\2\2\2\u00cf\u00d1\4\62;\2\u00d0\u00cf\3\2\2\2\u00d1"+
+		"\u00d2\3\2\2\2\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\64\3\2\2"+
+		"\2\u00d4\u00d6\t\5\2\2\u00d5\u00d4\3\2\2\2\u00d6\u00d7\3\2\2\2\u00d7\u00d5"+
+		"\3\2\2\2\u00d7\u00d8\3\2\2\2\u00d8\66\3\2\2\2\t\2\u00c0\u00c7\u00cc\u00d2"+
+		"\u00d5\u00d7\3\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -1,9 +1,10 @@
 grammar SchedulingGrammar;
 
-expression  : command entity ';';
+ekspresi  : perintah entitas ';';
 
-command     : BUAT | UBAH | HAPUS | LIHAT ;
-entity      : (KELAS | RUANG) kode (DENGAN atribut)?;
+perintah     : BUAT | UBAH | HAPUS | LIHAT ;
+entitas      : objek kode (DENGAN atribut)?;
+objek       : KELAS | RUANG ;
 kode        : KODE_VALUE ;
 atribut     :  ( FASILITAS '=' meta_fasilitas
                 | SKS '=' sks
