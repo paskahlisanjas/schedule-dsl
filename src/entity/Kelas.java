@@ -16,6 +16,7 @@ public class Kelas {
 
     public Kelas(String kode, List<String> kebutuhan, int jumlahMhs, int hariPref, int jamPref) {
         this.kode = kode;
+        this.jumlahMhs = jumlahMhs;
         this.kebutuhan = kebutuhan;
         this.isAssigned = false;
         this.isAvailable = true;
@@ -34,5 +35,10 @@ public class Kelas {
 
     public char getTingkat() {
         return this.kode.charAt(2);
+    }
+
+    @Override
+    public String toString() {
+        return "Kelas: " + kode + " (" + jumlahMhs + " orang) " + kebutuhan.toString() + " <Preferensi: " + hariPref + " - " + jamPref + ">";
     }
 }

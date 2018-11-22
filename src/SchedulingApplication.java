@@ -16,10 +16,11 @@ import java.util.List;
 public class SchedulingApplication {
     final static String DATABASE_PATH = "schedule.db";
     final static String cek = "BUAT \n" +
-            "    RUANG R7602\n" +
-            "DENGAN \n" +
-            "    KAPASITAS = 50\n" +
-            "    FASILITAS = AC, MEJA, KURSI;";
+            "    KELAS IF2402\n" +
+            "DENGAN\n" +
+            "    KEBUTUHAN = AC, PROYEKTOR, PAPAN-TULIS\n" +
+            "    KAPASITAS = 59\n" +
+            "    PREFERENSI = HARI SENIN JAM KE 1;";
 
     public static void main(String args[]) {
         SchedulingGrammarLexer lexer = new SchedulingGrammarLexer(new ANTLRInputStream(cek));
@@ -31,7 +32,7 @@ public class SchedulingApplication {
 
         SchedulingGrammarParser.EntitasContext entitas = ekspresi.entitas();
 
-        Ruang ruang = (Ruang) EntityBuilder.build(entitas);
-        System.out.println(ruang.toString());
+        Kelas kelas = (Kelas) EntityBuilder.build(entitas);
+        System.out.println(kelas.toString());
     }
 }
