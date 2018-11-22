@@ -58,7 +58,9 @@ public class EntityBuilder {
             fasilitasList.add(context.getText());
         }
 
-        return new Ruang(kode.getText(), kapasitas.getText(), fasilitasList);
+        int kapasitasInt = Integer.parseInt(kapasitas.getText());
+
+        return new Ruang(kode.getText(), kapasitasInt, fasilitasList);
     }
 
     private static int indexHariOf(String hariStr) {
