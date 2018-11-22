@@ -41,8 +41,8 @@ SKS         : 'SKS' ;
 HARI        : 'HARI' ;
 JAM         : 'JAM KE' ;
 
+WS          : [ \t\r\n]+ -> skip;
+
 NUMBER      : [0-9]+;
 KODE_VALUE  : [a-zA-Z]*('0'..'9')+ ;
 TEXT        : ([a-zA-Z]|('0'..'9')|'-')+ ;
-
-WS          : [ \t\r\n]+ -> skip;
