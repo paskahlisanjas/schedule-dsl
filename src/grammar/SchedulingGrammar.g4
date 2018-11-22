@@ -4,7 +4,7 @@ expression  : command entity ';';
 
 command     : BUAT | UBAH | HAPUS | LIHAT ;
 entity      : (KELAS | RUANG) kode (DENGAN atribut)?;
-kode        : '\'' KODE_VALUE '\'' ;
+kode        : KODE_VALUE ;
 atribut     :  ( FASILITAS '=' meta_fasilitas
                 | SKS '=' sks
                 | KEBUTUHAN '=' meta_kebutuhan
@@ -12,8 +12,8 @@ atribut     :  ( FASILITAS '=' meta_fasilitas
                 | KAPASITAS '=' kapasitas
                )+;
 
-meta_kebutuhan : ('\'' kebutuhan '\'' ','?)+ ;
-meta_fasilitas : ('\'' fasilitas '\'' ','?)+ ;
+meta_kebutuhan : ( kebutuhan ','?)+ ;
+meta_fasilitas : ( fasilitas ','?)+ ;
 
 kebutuhan   : TEXT ;
 fasilitas   : TEXT ;
