@@ -7,13 +7,13 @@ public class Penjadwalan {
     public ArrayList<ArrayList<ArrayList<Slot>>> jadwalKelas;
 
     public Penjadwalan() {
-        this.jadwalKelas =  new ArrayList<>();
+        this.jadwalKelas = new ArrayList<>();
     }
 
     public boolean isAvailable(Ruang ruang, int hari, int jam) {
         List<Slot> listKelas = jadwalKelas.get(hari).get(jam);
         boolean availability = true;
-        for (Slot slot: listKelas) {
+        for (Slot slot : listKelas) {
             if (slot.ruang.kode.equals(ruang.kode)) {
                 availability = false;
                 break;
@@ -23,13 +23,13 @@ public class Penjadwalan {
     }
 
     public boolean assignKelas(Kelas kelas, Ruang ruang, int hari, int jam) {
-        if (cekKapasitas(kelas,ruang) && cekFasilitas(kelas,ruang)) {
-            Slot slot = new Slot(kelas,ruang);
+        if (cekKapasitas(kelas, ruang) && cekFasilitas(kelas, ruang)) {
+            Slot slot = new Slot(kelas, ruang);
             ArrayList<ArrayList<Slot>> jadwalhari = jadwalKelas.get(hari);
             ArrayList<Slot> jadwaljam = jadwalKelas.get(hari).get(jam);
             jadwaljam.add(slot);
-            jadwalhari.set(jam,jadwaljam);
-            jadwalKelas.set(hari,jadwalhari);
+            jadwalhari.set(jam, jadwaljam);
+            jadwalKelas.set(hari, jadwalhari);
             kelas.isAssigned = true;
             return true;
         } else {
@@ -43,7 +43,7 @@ public class Penjadwalan {
         ArrayList<Slot> listjam = jadwalKelas.get(hari).get(jam);
         boolean cektingkat = true;
         for (Slot slot : listjam) {
-            if(slot.kelas.getTingkat() == kelas.getTingkat()) {
+            if (slot.kelas.getTingkat() == kelas.getTingkat()) {
                 cektingkat = false;
                 break;
             }
@@ -59,9 +59,9 @@ public class Penjadwalan {
     public boolean cekFasilitas(Kelas kelas, Ruang ruang) {
         // return true apabila fasilitas memadai
         boolean isMemadai = true;
-        for (String kebutuhan: kelas.kebutuhan) {
+        for (String kebutuhan : kelas.kebutuhan) {
             boolean found = false;
-            for (String fasilitas: ruang.fasilitas) {
+            for (String fasilitas : ruang.fasilitas) {
                 if (kebutuhan.equals(fasilitas)) {
                     found = true;
                     break;

@@ -1,10 +1,11 @@
 grammar SchedulingGrammar;
 
-expression  : command entity ';';
+ekspresi  : perintah entitas ';';
 
-command     : BUAT | UBAH | HAPUS | LIHAT ;
-entity      : (KELAS | RUANG) kode (DENGAN atribut)?;
-kode        : '\'' KODE_VALUE '\'' ;
+perintah     : BUAT | UBAH | HAPUS | LIHAT ;
+entitas      : objek kode (DENGAN atribut)?;
+objek       : KELAS | RUANG ;
+kode        : KODE_VALUE ;
 atribut     :  ( FASILITAS '=' meta_fasilitas
                 | SKS '=' sks
                 | KEBUTUHAN '=' meta_kebutuhan
@@ -12,8 +13,8 @@ atribut     :  ( FASILITAS '=' meta_fasilitas
                 | KAPASITAS '=' kapasitas
                )+;
 
-meta_kebutuhan : ('\'' kebutuhan '\'' ','?)+ ;
-meta_fasilitas : ('\'' fasilitas '\'' ','?)+ ;
+meta_kebutuhan : ( kebutuhan ','?)+ ;
+meta_fasilitas : ( fasilitas ','?)+ ;
 
 kebutuhan   : TEXT ;
 fasilitas   : TEXT ;
@@ -41,8 +42,8 @@ SKS         : 'SKS' ;
 HARI        : 'HARI' ;
 JAM         : 'JAM KE' ;
 
+WS          : [ \t\r\n]+ -> skip;
+
 NUMBER      : [0-9]+;
 KODE_VALUE  : [a-zA-Z]*('0'..'9')+ ;
 TEXT        : ([a-zA-Z]|('0'..'9')|'-')+ ;
-
-WS          : [ \t\r\n]+ -> skip;
