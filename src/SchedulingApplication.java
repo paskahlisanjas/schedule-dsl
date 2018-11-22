@@ -12,27 +12,41 @@ import entity.Ruang;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class SchedulingApplication {
     final static String DATABASE_PATH = "schedule.db";
-    final static String cek = "BUAT \n" +
-            "    KELAS IF2402\n" +
-            "DENGAN\n" +
-            "    KEBUTUHAN = AC, PROYEKTOR, PAPAN-TULIS\n" +
-            "    KAPASITAS = 59\n" +
-            "    PREFERENSI = HARI SENIN JAM KE 1;";
+
+    static void runConsole() {
+        StringBuilder input;
+        do {
+            System.out.print(">> ");
+            Scanner scanner = new Scanner(System.in);
+            input = new StringBuilder();
+            do {
+                input.append(scanner.nextLine());
+                if (!input.toString().contains(";")) {
+                    input.append("\n");
+                    System.out.print(".. ");
+                }
+            } while (!input.toString().contains(";"));
+
+            if (!input.toString().contains("STOP")) {
+                SchedulingGrammarLexer lexer = new SchedulingGrammarLexer(new ANTLRInputStream(input.toString()));
+                SchedulingGrammarParser parser = new SchedulingGrammarParser(new CommonTokenStream(lexer));
+                SchedulingGrammarParser.EkspresiContext ekspresi = parser.ekspresi();
+
+                SchedulingGrammarParser.EntitasContext entitas = ekspresi.entitas();
+
+                Kelas kelas = (Kelas) EntityBuilder.build(entitas);
+                System.out.println(kelas.toString());
+            }
+        } while (!input.toString().contains("STOP"));
+    }
+
+
 
     public static void main(String args[]) {
-        SchedulingGrammarLexer lexer = new SchedulingGrammarLexer(new ANTLRInputStream(cek));
-        SchedulingGrammarParser parser = new SchedulingGrammarParser(new CommonTokenStream(lexer));
-
-        String str;
-
-        SchedulingGrammarParser.EkspresiContext ekspresi = parser.ekspresi();
-
-        SchedulingGrammarParser.EntitasContext entitas = ekspresi.entitas();
-
-        Kelas kelas = (Kelas) EntityBuilder.build(entitas);
-        System.out.println(kelas.toString());
+//        runConsole();
     }
 }
