@@ -1,5 +1,7 @@
-package entity;
+package translator;
 
+import entity.Kelas;
+import entity.Ruang;
 import parser.SchedulingGrammarParser;
 import parser.SchedulingGrammarParser.*;
 
@@ -7,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntityBuilder {
-    private static final String KELAS_OJBECT = "KELAS";
+
     private static final String[] HARI = {
             "SENIN",
             "SELASA",
@@ -16,37 +18,37 @@ public class EntityBuilder {
             "JUMAT"
     };
 
-    public static Object build(SchedulingGrammarParser.EntitasContext entitas) {
-        SchedulingGrammarParser.ObjekContext objek = entitas.objek();
-        if (objek.getText().equals(KELAS_OJBECT)) {
-            return buildKelas(entitas);
-        }
-        return buildRuang(entitas);
-    }
 
-    private static Kelas buildKelas(SchedulingGrammarParser.EntitasContext entitas) {
+    static Kelas buildKelas(SchedulingGrammarParser.EntitasContext entitas) {
         KodeContext kode = entitas.kode();
         AtributContext atribut = entitas.atribut();
         KapasitasContext kapasitas = atribut.kapasitas(0);
         Meta_kebutuhanContext metaKebutuhan = atribut.meta_kebutuhan(0);
-        List<KebutuhanContext> kebutuhan = metaKebutuhan.kebutuhan();
-        PreferensiContext preferensi = atribut.preferensi(0);
-        HariContext hari = preferensi.hari();
-        JamContext jam = preferensi.jam();
 
+        List<KebutuhanContext> kebutuhan = metaKebutuhan.kebutuhan();
         List<String> kebutuhanList = new ArrayList<>();
         for (KebutuhanContext context : kebutuhan) {
             kebutuhanList.add(context.getText());
         }
 
         int kapasitasInt = Integer.parseInt(kapasitas.getText());
-        int hariInt = indexHariOf(hari.getText());
-        int jamInt = Integer.parseInt(jam.getText());
 
-        return new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt);
+        try {
+            PreferensiContext preferensi = atribut.preferensi(0);
+            HariContext hari = preferensi.hari();
+            JamContext jam = preferensi.jam();
+
+            int hariInt = indexHariOf(hari.getText());
+            int jamInt = Integer.parseInt(jam.getText());
+
+            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt - 6);
+        } catch (Exception e) {
+            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt);
+        }
+
     }
 
-    private static Ruang buildRuang(SchedulingGrammarParser.EntitasContext entitas) {
+    static Ruang buildRuang(SchedulingGrammarParser.EntitasContext entitas) {
         KodeContext kode = entitas.kode();
         AtributContext atribut = entitas.atribut();
         KapasitasContext kapasitas = atribut.kapasitas(0);
