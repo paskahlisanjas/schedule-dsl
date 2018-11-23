@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sqlite-jdbc-3.23.1" level="project" />
     <orderEntry type="library" name="antlr-4.7-intellij-1.8.4-version-complete" level="project" />
+    <orderEntry type="library" name="intellij-plugin-v4" level="project" />
   </component>
 </module>

@@ -8,6 +8,113 @@ public class Penjadwalan {
 
     public Penjadwalan() {
         this.jadwalKelas = new ArrayList<>();
+        int i;
+
+        ArrayList<Slot> listJam = new ArrayList<>();
+        ArrayList<ArrayList<Slot>> listHari = new ArrayList<>();
+        for(i=1;i<=5;i++) {
+            jadwalKelas.add(new ArrayList<>());
+        }
+        for(ArrayList jadwalHari: jadwalKelas) {
+            for(i=1;i<=11;i++) {
+                jadwalHari.add(new ArrayList<>());
+            }
+        }
+
+    }
+
+    public void jadwalkan (List<Kelas> listKelas, List<Ruang> listRuang) {
+        int hari;
+        int jam;
+        for (Kelas kelas : listKelas) {
+            if (!kelas.isAssigned) {
+                if (kelas.hariPref != 0) {
+                    // cari kelas
+                    Ruang ruangDipilih = null;
+                    for (Ruang ruang : listRuang) {
+                        if (isAvailable(ruang, kelas.hariPref, kelas.jamPref)) {
+                            ruangDipilih = ruang;
+                            break;
+                        }
+                    }
+                    if (ruangDipilih != null) {
+                        kelas.isAssigned = assignKelas(kelas, ruangDipilih, kelas.hariPref, kelas.jamPref);
+                    }
+                }
+                if (!kelas.isAssigned) {
+                    if (kelas.getTingkat() == '2') {
+                        //Tingkat 2, jam 1 ke atas
+                        hari = 0;
+                        while (!kelas.isAssigned && hari <= 4) {
+                            jam = 6;
+                            while (!kelas.isAssigned && jam <= 10) {
+                                if (cekTingkatSama(kelas, hari, jam)) {
+                                    for (Ruang ruang : listRuang) { //cari kelas
+                                        kelas.isAssigned = assignKelas(kelas, ruang, hari, jam);
+                                        if (kelas.isAssigned) {
+                                            break;
+                                        }
+                                    }
+                                }
+                                jam++;
+                            }
+                            hari++;
+                        }
+                    } else if (kelas.getTingkat() == '3') {
+                        //Tingkat 3, jam 7 ke atas, sebelum jam 12
+                        hari = 0;
+                        while (!kelas.isAssigned && hari <= 4) {
+                            jam = 0;
+                            while (!kelas.isAssigned && jam <= 4) {
+                                if (cekTingkatSama(kelas, hari, jam)) {
+                                    for (Ruang ruang : listRuang) { //cari kelas
+                                        kelas.isAssigned = assignKelas(kelas, ruang, hari, jam);
+                                        if (kelas.isAssigned) {
+                                            break;
+                                        }
+                                    }
+                                }
+                                jam++;
+                            }
+                            hari++;
+                        }
+                    } else {
+                        //Tingkat 4, bebas
+                        System.out.println(kelas.getTingkat());
+                        hari = 0;
+                        while (!kelas.isAssigned && hari <= 4) {
+                            jam = 0;
+                            while (!kelas.isAssigned && jam <= 10) {
+                                if (cekTingkatSama(kelas, hari, jam)) {
+                                    for (Ruang ruang : listRuang) { //cari kelas
+                                        kelas.isAssigned = assignKelas(kelas, ruang, hari, jam);
+                                        if (kelas.isAssigned) {
+                                            break;
+                                        }
+                                    }
+                                }
+                                jam++;
+                            }
+                            hari++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean assignKelas(Kelas kelas, Ruang ruang, int hari, int jam) {
+        if (cekKapasitas(kelas, ruang) && cekFasilitas(kelas, ruang)) {
+            Slot slot = new Slot(kelas, ruang);
+            ArrayList<ArrayList<Slot>> jadwalhari = jadwalKelas.get(hari);
+            ArrayList<Slot> jadwaljam = jadwalKelas.get(hari).get(jam);
+            jadwaljam.add(slot);
+            jadwalhari.set(jam, jadwaljam);
+            jadwalKelas.set(hari, jadwalhari);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isAvailable(Ruang ruang, int hari, int jam) {
@@ -21,22 +128,6 @@ public class Penjadwalan {
             }
         }
         return availability;
-    }
-
-    public boolean assignKelas(Kelas kelas, Ruang ruang, int hari, int jam) {
-        if (cekKapasitas(kelas, ruang) && cekFasilitas(kelas, ruang)) {
-            Slot slot = new Slot(kelas, ruang);
-            ArrayList<ArrayList<Slot>> jadwalhari = jadwalKelas.get(hari);
-            ArrayList<Slot> jadwaljam = jadwalKelas.get(hari).get(jam);
-            jadwaljam.add(slot);
-            jadwalhari.set(jam, jadwaljam);
-            jadwalKelas.set(hari, jadwalhari);
-            kelas.isAssigned = true;
-            return true;
-        } else {
-            return false;
-        }
-
     }
 
     public boolean cekTingkatSama(Kelas kelas, int hari, int jam) {
@@ -125,5 +216,19 @@ public class Penjadwalan {
         return String.valueOf(jam+6);
     }
 
-    
+    public void printJadwal() {
+        int hari = 1;
+        for (ArrayList<ArrayList<Slot>> listHari: jadwalKelas) {
+            System.out.println("HARI " + getHari(hari) + ":");
+            int jam = 1;
+            for (ArrayList<Slot> listJam: listHari) {
+                System.out.println("Jam " + getJam(jam) + ":");
+                for (Slot kuliah: listJam) {
+                    System.out.println(kuliah.kelas.kode + " di " + kuliah.ruang.kode);
+                }
+                jam++;
+            }
+            hari++;
+        }
+    }
 }
