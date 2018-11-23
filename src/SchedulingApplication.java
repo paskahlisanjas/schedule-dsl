@@ -1,4 +1,4 @@
-import entity.EntityBuilder;
+import translator.EntityBuilder;
 import entity.Kelas;
 import entity.Penjadwalan;
 import entity.Ruang;

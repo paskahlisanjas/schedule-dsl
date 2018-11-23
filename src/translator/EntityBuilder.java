@@ -1,5 +1,7 @@
-package entity;
+package translator;
 
+import entity.Kelas;
+import entity.Ruang;
 import parser.SchedulingGrammarParser;
 import parser.SchedulingGrammarParser.*;
 
