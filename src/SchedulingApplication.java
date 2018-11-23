@@ -1,11 +1,7 @@
-import translator.EntityBuilder;
 import entity.Kelas;
 import entity.Penjadwalan;
 import entity.Ruang;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-import parser.SchedulingGrammarLexer;
-import parser.SchedulingGrammarParser;
+import translator.Translator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +11,7 @@ public class SchedulingApplication {
     final static String DATABASE_PATH = "schedule.db";
     static List<Kelas> listKelas = new ArrayList<>();
     static List<Ruang> listRuang = new ArrayList<>();
+    static Translator translator = new Translator(listKelas, listRuang);
 
     static void runConsole() {
         StringBuilder input;
@@ -31,19 +28,15 @@ public class SchedulingApplication {
             } while (!input.toString().contains(";"));
 
             if (!input.toString().contains("STOP")) {
-                SchedulingGrammarLexer lexer = new SchedulingGrammarLexer(new ANTLRInputStream(input.toString()));
-                SchedulingGrammarParser parser = new SchedulingGrammarParser(new CommonTokenStream(lexer));
-                SchedulingGrammarParser.EkspresiContext ekspresi = parser.ekspresi();
-
-                SchedulingGrammarParser.EntitasContext entitas = ekspresi.entitas();
-
-                Kelas kelas = (Kelas) EntityBuilder.build(entitas);
-                System.out.println(kelas.toString());
+                translator.translate(input.toString());
+                translator.runCommand();
             }
         } while (!input.toString().contains("STOP"));
     }
 
     public static void main(String args[]) {
+        runConsole();
+
 //        DatabaseManager dbmanager = new DatabaseManager(DATABASE_PATH)
         Penjadwalan jadwal = new Penjadwalan();
 //        Bikin Kelas
