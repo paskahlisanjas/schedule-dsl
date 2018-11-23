@@ -3,8 +3,8 @@ grammar SchedulingGrammar;
 ekspresi  : perintah entitas ';';
 
 perintah     : BUAT | UBAH | HAPUS | LIHAT ;
-entitas      : objek kode (DENGAN atribut)?;
-objek       : KELAS | RUANG ;
+entitas      : objek kode? (DENGAN atribut)?;
+objek       : KELAS | RUANG | JADWAL ;
 kode        : KODE_VALUE ;
 atribut     :  ( FASILITAS '=' meta_fasilitas
                 | SKS '=' sks
@@ -41,6 +41,7 @@ PREFERENSI  : 'PREFERENSI' ;
 SKS         : 'SKS' ;
 HARI        : 'HARI' ;
 JAM         : 'JAM KE' ;
+JADWAL      : 'JADWAL' ;
 
 WS          : [ \t\r\n]+ -> skip;
 

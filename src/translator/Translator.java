@@ -18,6 +18,12 @@ public class Translator {
     }
 
     public Object runCommand() {
-
+        switch (ekspresi.perintah().getText()) {
+            case "BUAT":
+                break;
+            case "LIHAT":
+                break;
+            case ""
+        }
     }
 }
