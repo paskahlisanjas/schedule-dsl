@@ -40,7 +40,7 @@ KEBUTUHAN   : 'KEBUTUHAN' ;
 PREFERENSI  : 'PREFERENSI' ;
 SKS         : 'SKS' ;
 HARI        : 'HARI' ;
-JAM         : 'JAM KE' ;
+JAM         : 'JAM' ;
 JADWAL      : 'JADWAL' ;
 
 WS          : [ \t\r\n]+ -> skip;

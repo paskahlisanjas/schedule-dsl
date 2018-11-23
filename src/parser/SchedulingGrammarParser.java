@@ -36,7 +36,7 @@ public class SchedulingGrammarParser extends Parser {
 		null, "';'", "'='", "','", "'SENIN'", "'SELASA'", "'RABU'", "'KAMIS'", 
 		"'JUMAT'", "'BUAT'", "'UBAH'", "'HAPUS'", "'LIHAT'", "'KELAS'", "'RUANG'", 
 		"'DENGAN'", "'FASILITAS'", "'KAPASITAS'", "'KEBUTUHAN'", "'PREFERENSI'", 
-		"'SKS'", "'HARI'", "'JAM KE'", "'JADWAL'"
+		"'SKS'", "'HARI'", "'JAM'", "'JADWAL'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, "BUAT", "UBAH", 

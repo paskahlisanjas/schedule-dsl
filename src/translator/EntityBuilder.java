@@ -41,7 +41,7 @@ public class EntityBuilder {
             int hariInt = indexHariOf(hari.getText());
             int jamInt = Integer.parseInt(jam.getText());
 
-            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt);
+            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt - 6);
         } catch (Exception e) {
             return new Kelas(kode.getText(), kebutuhanList, kapasitasInt);
         }
