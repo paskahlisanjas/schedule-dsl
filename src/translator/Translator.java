@@ -32,7 +32,6 @@ public class Translator {
 
     private void runBuat() {
         SchedulingGrammarParser.EntitasContext entitas = ekspresi.entitas();
-
         switch (entitas.objek().getText()) {
             case KELAS_OJBECT:
                 Kelas kelas = EntityBuilder.buildKelas(entitas);
@@ -82,21 +81,16 @@ public class Translator {
     }
 
     public void runCommand() {
-        try {
-            switch (ekspresi.perintah().getText()) {
-                case "BUAT":
-                    runBuat();
-                    break;
-                case "LIHAT":
-                    runLihat();
-                    break;
-                default:
-                    System.out.println("Perintah tidak ditemukan.");
-                    break;
-            }
-        } catch (Exception e) {
-            System.out.println("Perintah tidak valid.");
+        switch (ekspresi.perintah().getText()) {
+            case "BUAT":
+                runBuat();
+                break;
+            case "LIHAT":
+                runLihat();
+                break;
+            default:
+                System.out.println("Perintah tidak ditemukan.");
+                break;
         }
-
     }
 }

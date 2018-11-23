@@ -24,21 +24,28 @@ public class EntityBuilder {
         AtributContext atribut = entitas.atribut();
         KapasitasContext kapasitas = atribut.kapasitas(0);
         Meta_kebutuhanContext metaKebutuhan = atribut.meta_kebutuhan(0);
-        List<KebutuhanContext> kebutuhan = metaKebutuhan.kebutuhan();
-        PreferensiContext preferensi = atribut.preferensi(0);
-        HariContext hari = preferensi.hari();
-        JamContext jam = preferensi.jam();
 
+        List<KebutuhanContext> kebutuhan = metaKebutuhan.kebutuhan();
         List<String> kebutuhanList = new ArrayList<>();
         for (KebutuhanContext context : kebutuhan) {
             kebutuhanList.add(context.getText());
         }
 
         int kapasitasInt = Integer.parseInt(kapasitas.getText());
-        int hariInt = indexHariOf(hari.getText());
-        int jamInt = Integer.parseInt(jam.getText());
 
-        return new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt);
+        try {
+            PreferensiContext preferensi = atribut.preferensi(0);
+            HariContext hari = preferensi.hari();
+            JamContext jam = preferensi.jam();
+
+            int hariInt = indexHariOf(hari.getText());
+            int jamInt = Integer.parseInt(jam.getText());
+
+            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt);
+        } catch (Exception e) {
+            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt);
+        }
+
     }
 
     static Ruang buildRuang(SchedulingGrammarParser.EntitasContext entitas) {
