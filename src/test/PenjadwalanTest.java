@@ -41,7 +41,7 @@ public class PenjadwalanTest {
   }
 
   private void InitializeTestCaseData(ResourceFile res){
-    Translator translator = new Translator(listKelas, listRuang);
+    Translator translator = new Translator(listKelas, listRuang, jadwal);
     List<String> queries = new ArrayList<>();
 
     try {
