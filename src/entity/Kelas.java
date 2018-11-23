@@ -5,7 +5,6 @@ import java.util.List;
 public class Kelas {
     public int jumlahMhs;
     public String kode;
-    public List<String> waktu;
     public List<String> kebutuhan;
     public int hariPref;
     public int jamPref;
@@ -27,6 +26,7 @@ public class Kelas {
         this.kebutuhan = kebutuhan;
         this.isAssigned = false;
         this.isAvailable = true;
+        this.jumlahMhs = jumlahMhs;
         this.hariPref = 0;
         this.jamPref = 0;
     }

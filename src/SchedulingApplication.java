@@ -46,6 +46,7 @@ public class SchedulingApplication {
     public static void main(String args[]) {
 //        DatabaseManager dbmanager = new DatabaseManager(DATABASE_PATH)
         Penjadwalan jadwal = new Penjadwalan();
+//        runConsole();
 //        Bikin Kelas
 //        Bikin Ruang
 //        Jadwalkan
@@ -128,9 +129,6 @@ public class SchedulingApplication {
                     }
                 }
             }
-//        Lihat Jadwal
-//        Lihat Kelas
-//        Lihat Ruang
 
         }
     }

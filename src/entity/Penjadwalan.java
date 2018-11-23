@@ -11,6 +11,7 @@ public class Penjadwalan {
     }
 
     public boolean isAvailable(Ruang ruang, int hari, int jam) {
+        // return true jika ruang kosong
         List<Slot> listKelas = jadwalKelas.get(hari).get(jam);
         boolean availability = true;
         for (Slot slot : listKelas) {
@@ -73,4 +74,56 @@ public class Penjadwalan {
         }
         return isMemadai;
     }
+
+    public void lihatKelas(Kelas kelas) {
+        // print jam diadakan kelas dan ruangannya
+        for (ArrayList<ArrayList<Slot>> listHari: jadwalKelas) {
+            for (ArrayList<Slot> listJam: listHari) {
+                for (Slot kuliah: listJam) {
+                    if (kuliah.kelas.kode.equals(kelas.kode)) {
+                        System.out.println("Kuliah hari " + getHari(jadwalKelas.indexOf(listHari)) + " jam " +
+                                getJam(listHari.indexOf(listJam)) + " di " + kuliah.ruang.kode);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public void lihatRuang(Ruang ruang) {
+        // print jam dan hari digunakan suatu ruang dan kuliahnya apa
+        for (ArrayList<ArrayList<Slot>> listHari: jadwalKelas) {
+            for (ArrayList<Slot> listJam: listHari) {
+                for (Slot kuliah: listJam) {
+                    if (kuliah.ruang.kode.equals(ruang.kode)) {
+                        System.out.println("Kelas digunakan kuliah " + kuliah.kelas.kode + "Hari" +
+                                getHari(jadwalKelas.indexOf(listHari)) + " jam " + getJam(listHari.indexOf(listJam)));
+                    }
+                }
+            }
+        }
+    }
+
+    public String getHari(int hari) {
+        switch (hari) {
+            case 1:
+                return "SENIN";
+            case 2:
+                return "SELASA";
+            case 3:
+                return "RABU";
+            case 4:
+                return "KAMIS";
+            case 5:
+                return "JUMAT";
+            default:
+                return "HARI ERROR";
+        }
+    }
+
+    public String getJam(int jam) {
+        return String.valueOf(jam+6);
+    }
+
+    
 }
