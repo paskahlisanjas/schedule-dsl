@@ -216,41 +216,34 @@ public class Penjadwalan {
         return String.valueOf(jam+6);
     }
 
-    public void printJadwal() {
-        int hari = 1;
-        for (ArrayList<ArrayList<Slot>> listHari: jadwalKelas) {
-            System.out.println("HARI " + getHari(hari) + ":");
-            int jam = 1;
-            for (ArrayList<Slot> listJam: listHari) {
-                System.out.println("Jam " + getJam(jam) + ":");
-                for (Slot kuliah: listJam) {
-                    System.out.println(kuliah.kelas.kode + " di " + kuliah.ruang.kode);
-                }
-                jam++;
-            }
-            hari++;
-        }
-    }
-
-    public void printJadwalz(int banyakKelas) {
+    public void printJadwal(int banyakKelas) {
         //Print Label
-        System.out.println("JAM|  SENIN  |  SELASA  |  RABU  |  KAMIS  |  JUMAT  |");
+        System.out.println("JAM|   SENIN   |  SELASA   |   RABU    |   KAMIS   |   JUMAT   |");
         //print per jam
         int jam;
         int hari;
         int line;
         for (jam = 0; jam <= 10; jam++) {
-            //print per line
             for(line = 0; line <= banyakKelas; line++) {
                 if(line == 0) {
-                    System.out.print(" " + String.valueOf(jam+7) + " ");
+                    if (jam+7 < 10) {
+                        System.out.print(" " + String.valueOf(jam+7) + " |");
+                    } else {
+                        System.out.print(" " + String.valueOf(jam+7) + "|");
+                    }
                 } else {
-                    System.out.print("   ");
+                    System.out.print("   |");
                 }
                 //print per hari
                 for(hari=0;hari<=4;hari++) {
-
+                    try {
+                        System.out.print(jadwalKelas.get(hari).get(jam).get(line).kelas.kode + "-" +
+                                jadwalKelas.get(hari).get(jam).get(line).ruang.kode+"|");
+                    } catch(IndexOutOfBoundsException e) {
+                        System.out.print("           |");
+                    }
                 }
+                System.out.println();
             }
         }
 
