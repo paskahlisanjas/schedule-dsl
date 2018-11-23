@@ -172,6 +172,18 @@ public class SchedulingGrammarBaseListener implements SchedulingGrammarListener 
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterKetersediaan(SchedulingGrammarParser.KetersediaanContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitKetersediaan(SchedulingGrammarParser.KetersediaanContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterHari(SchedulingGrammarParser.HariContext ctx) { }
 	/**
 	 * {@inheritDoc}

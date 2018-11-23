@@ -18,8 +18,14 @@ public class EntityBuilder {
             "JUMAT"
     };
 
+    private static final String[] KETERSEDIAAN = {
+            "TIDAK",
+            "YA"
+    };
 
     static Kelas buildKelas(SchedulingGrammarParser.EntitasContext entitas) {
+        Kelas kelas = new Kelas();
+
         KodeContext kode = entitas.kode();
         AtributContext atribut = entitas.atribut();
         KapasitasContext kapasitas = atribut.kapasitas(0);
@@ -38,14 +44,21 @@ public class EntityBuilder {
             HariContext hari = preferensi.hari();
             JamContext jam = preferensi.jam();
 
-            int hariInt = indexHariOf(hari.getText());
+            int hariInt = indexOf(hari.getText(), HARI);
             int jamInt = Integer.parseInt(jam.getText());
 
-            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt - 6);
+            kelas = new Kelas(kode.getText(), kebutuhanList, kapasitasInt, hariInt, jamInt - 6, true);
         } catch (Exception e) {
-            return new Kelas(kode.getText(), kebutuhanList, kapasitasInt);
+            kelas = new Kelas(kode.getText(), kebutuhanList, kapasitasInt, true);
         }
 
+        try {
+            KetersediaanContext ketersediaan = atribut.ketersediaan(0);
+            kelas.isAvailable = indexOf(ketersediaan.getText(), KETERSEDIAAN) == 1;
+        } catch (Exception ignored) {
+        }
+
+        return kelas;
     }
 
     static Ruang buildRuang(SchedulingGrammarParser.EntitasContext entitas) {
@@ -65,10 +78,10 @@ public class EntityBuilder {
         return new Ruang(kode.getText(), kapasitasInt, fasilitasList);
     }
 
-    private static int indexHariOf(String hariStr) {
-        int index = 1;
-        for (String str : HARI) {
-            if (hariStr.equals(str)) {
+    private static int indexOf(String input, String[] list) {
+        int index = 0;
+        for (String str : list) {
+            if (input.equals(str)) {
                 return index;
             }
             index++;

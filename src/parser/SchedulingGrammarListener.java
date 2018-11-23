@@ -138,6 +138,16 @@ public interface SchedulingGrammarListener extends ParseTreeListener {
 	 */
 	void exitPreferensi(SchedulingGrammarParser.PreferensiContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SchedulingGrammarParser#ketersediaan}.
+	 * @param ctx the parse tree
+	 */
+	void enterKetersediaan(SchedulingGrammarParser.KetersediaanContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SchedulingGrammarParser#ketersediaan}.
+	 * @param ctx the parse tree
+	 */
+	void exitKetersediaan(SchedulingGrammarParser.KetersediaanContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SchedulingGrammarParser#hari}.
 	 * @param ctx the parse tree
 	 */

@@ -11,6 +11,7 @@ atribut     :  ( FASILITAS '=' meta_fasilitas
                 | KEBUTUHAN '=' meta_kebutuhan
                 | PREFERENSI '=' preferensi
                 | KAPASITAS '=' kapasitas
+                | KETERSEDIAAN '=' ketersediaan
                )+;
 
 meta_kebutuhan : ( kebutuhan ','?)+ ;
@@ -21,6 +22,7 @@ fasilitas   : TEXT ;
 sks         : NUMBER ;
 kapasitas   : NUMBER ;
 preferensi  : HARI hari JAM jam ;
+ketersediaan : ('YA' | 'TIDAK') ;
 hari        : ('SENIN' | 'SELASA' | 'RABU' | 'KAMIS' | 'JUMAT') ;
 jam         : NUMBER ;
 
@@ -38,6 +40,7 @@ FASILITAS   : 'FASILITAS' ;
 KAPASITAS   : 'KAPASITAS' ;
 KEBUTUHAN   : 'KEBUTUHAN' ;
 PREFERENSI  : 'PREFERENSI' ;
+KETERSEDIAAN: 'KETERSEDIAAN' ;
 SKS         : 'SKS' ;
 HARI        : 'HARI' ;
 JAM         : 'JAM' ;

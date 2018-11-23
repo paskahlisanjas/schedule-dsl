@@ -50,9 +50,9 @@ public class SchedulingApplication {
         listRuang.add(new Ruang("7602",70,kebutuhan));
         listRuang.add(new Ruang("7603",60,kebutuhan));
 
-        listKelas.add(new Kelas("IF4072",kebutuhan,50,1,8));
-        listKelas.add(new Kelas("IF2110",kebutuhan,60));
-        listKelas.add(new Kelas("IF3110",kebutuhan,60));
+//        listKelas.add(new Kelas("IF4072",kebutuhan,50,1,8));
+//        listKelas.add(new Kelas("IF2110",kebutuhan,60));
+//        listKelas.add(new Kelas("IF3110",kebutuhan,60));
 
 //        Bikin Ruang
 //        Jadwalkan
