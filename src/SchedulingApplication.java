@@ -9,11 +9,12 @@ import java.util.Scanner;
 
 public class SchedulingApplication {
     final static String DATABASE_PATH = "schedule.db";
-    static List<Kelas> listKelas = new ArrayList<>();
-    static List<Ruang> listRuang = new ArrayList<>();
-    static Translator translator = new Translator(listKelas, listRuang);
+    private static List<Kelas> listKelas = new ArrayList<>();
+    private static List<Ruang> listRuang = new ArrayList<>();
+    private static Penjadwalan jadwal = new Penjadwalan();
+    private static Translator translator = new Translator(listKelas, listRuang, jadwal);
 
-    static void runConsole() {
+    private static void runConsole() {
         StringBuilder input;
         do {
             System.out.print(">> ");
@@ -36,33 +37,5 @@ public class SchedulingApplication {
 
     public static void main(String args[]) {
         runConsole();
-
-//        DatabaseManager dbmanager = new DatabaseManager(DATABASE_PATH)
-        Penjadwalan jadwal = new Penjadwalan();
-//        runConsole();
-//        Bikin Kelas
-        List<String> kebutuhan = new ArrayList<>();
-        kebutuhan.add("AC");
-        kebutuhan.add("PAPANTULIS");
-        kebutuhan.add("PROYEKTOR");
-
-        listRuang.add(new Ruang("7604",50,kebutuhan));
-        listRuang.add(new Ruang("7602",70,kebutuhan));
-        listRuang.add(new Ruang("7603",60,kebutuhan));
-
-//        listKelas.add(new Kelas("IF4072",kebutuhan,50,1,8));
-//        listKelas.add(new Kelas("IF2110",kebutuhan,60));
-//        listKelas.add(new Kelas("IF3110",kebutuhan,60));
-
-//        Bikin Ruang
-//        Jadwalkan
-//        for each Kelas, Assign Kelas ke Ruangan dan Waktu
-//        Constraint & Preferences:
-//            - Kelas dengan tingkat yang sama tidak boleh tabrakan
-//            - Kapasitas ruangan >= jumlah Mhs
-//            - Kebutuhan harus dipenuhi oleh fasilitas kelas
-//            - Preferensi hari dan jam sudah ditentukan
-        jadwal.jadwalkan(listKelas,listRuang);
-        jadwal.printJadwal();
     }
 }

@@ -1,6 +1,7 @@
 package translator;
 
 import entity.Kelas;
+import entity.Penjadwalan;
 import entity.Ruang;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -18,10 +19,12 @@ public class Translator {
     private List<Kelas> kelasList;
     private List<Ruang> ruangList;
     private EkspresiContext ekspresi;
+    private Penjadwalan penjadwalan;
 
-    public Translator(List<Kelas> kelasList, List<Ruang> ruangList) {
+    public Translator(List<Kelas> kelasList, List<Ruang> ruangList, Penjadwalan penjadwalan) {
         this.kelasList = kelasList;
         this.ruangList = ruangList;
+        this.penjadwalan = penjadwalan;
     }
 
     public void translate(String input) {
@@ -44,8 +47,10 @@ public class Translator {
                 System.out.println(ruang.toString());
                 break;
             case JADWAL_OBJECT:
+                penjadwalan.jadwalkan(kelasList, ruangList);
                 break;
             default:
+                System.out.println("Objek tidak dikenali.");
                 break;
         }
 
@@ -73,9 +78,10 @@ public class Translator {
                 }
                 break;
             case JADWAL_OBJECT:
+                penjadwalan.printJadwal();
                 break;
             default:
-                System.out.println("Objek tidak ditemukan.");
+                System.out.println("Objek tidak dikenali.");
                 break;
         }
     }

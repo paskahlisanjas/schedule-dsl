@@ -27,7 +27,7 @@ public class Penjadwalan {
         int hari;
         int jam;
         for (Kelas kelas : listKelas) {
-            if (!kelas.isAssigned) {
+            if (!kelas.isAssigned && kelas.isAvailable) {
                 if (kelas.hariPref != 0) {
                     // cari kelas
                     Ruang ruangDipilih = null;
@@ -104,7 +104,7 @@ public class Penjadwalan {
     }
 
     public boolean assignKelas(Kelas kelas, Ruang ruang, int hari, int jam) {
-        if (cekKapasitas(kelas, ruang) && cekFasilitas(kelas, ruang)) {
+        if (cekKapasitas(kelas, ruang) && cekFasilitas(kelas, ruang) && isAvailable(ruang,hari,jam)) {
             Slot slot = new Slot(kelas, ruang);
             ArrayList<ArrayList<Slot>> jadwalhari = jadwalKelas.get(hari);
             ArrayList<Slot> jadwaljam = jadwalKelas.get(hari).get(jam);
@@ -230,5 +230,29 @@ public class Penjadwalan {
             }
             hari++;
         }
+    }
+
+    public void printJadwalz(int banyakKelas) {
+        //Print Label
+        System.out.println("JAM|  SENIN  |  SELASA  |  RABU  |  KAMIS  |  JUMAT  |");
+        //print per jam
+        int jam;
+        int hari;
+        int line;
+        for (jam = 0; jam <= 10; jam++) {
+            //print per line
+            for(line = 0; line <= banyakKelas; line++) {
+                if(line == 0) {
+                    System.out.print(" " + String.valueOf(jam+7) + " ");
+                } else {
+                    System.out.print("   ");
+                }
+                //print per hari
+                for(hari=0;hari<=4;hari++) {
+
+                }
+            }
+        }
+
     }
 }
